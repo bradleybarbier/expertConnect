@@ -419,3 +419,8 @@ FodyWeavers.xsd
 
 # Project specific files
 project-summary.md
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal

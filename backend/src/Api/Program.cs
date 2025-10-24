@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register services
 builder.Services.AddScoped<TimeSlotService>();
 builder.Services.AddScoped<BookingService>();
+builder.Services.AddScoped<DbInitializer>();
 
 var app = builder.Build();
 
@@ -33,11 +34,11 @@ else
     app.UseHttpsRedirection();
 }
 
-// Ensure database is created and migrations are applied
+// Initialize Database
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.EnsureCreated();
+    var initializer = scope.ServiceProvider.GetRequiredService<DbInitializer>();
+    await initializer.InitializeAsync();
 }
 
 // Expert endpoints

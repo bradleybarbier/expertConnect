@@ -18,6 +18,10 @@ dotnet watch run --launch-profile development
 The API will automatically open in your browser at http://localhost:5000/swagger
 
 ### Testing the API
+The database will be automatically created and seeded with sample data on first run, including:
+- Three expert profiles (Career Development, Technical Architecture, and Agile Coaching)
+- One example booking
+
 Once the Swagger UI opens, you can test the API with this workflow:
 
 1. Create an Expert:
